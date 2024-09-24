@@ -1,0 +1,55 @@
+//dahlia tynes 
+//apcsa 
+//11/09/2024 
+
+import java.util.Scanner;
+
+public class ProblemSet1B{
+    public static void main (String[]args){
+        Scanner input = new Scanner(System.in);
+        System.out.println("enter a degree in Celsius to convert into Fahrenheit");
+        Double c = input.nextDouble(); 
+
+        Double f = c*9/5 +32; 
+
+        System.out.println (c + " degrees celcius is "+ f+" degrees farenheit");
+
+        System.out.println("BMI CALCULATOR"); 
+        System.out.print("enter your weight in kg: "); 
+        Double kg = input.nextDouble(); 
+
+        System.out.print("enter your height in m: "); 
+        Double height = input.nextDouble(); 
+        Double BMI = kg/(height*height); 
+
+        System.out.println("YOUR BMI IS " +BMI); 
+        System.out.println("DAYS TO WEEKS CALCULATOR"); 
+        System.out.print("enter a number of days: "); 
+
+        int days = input.nextInt(); 
+        int weeks = days/7; 
+        int days2 = days%7; 
+        System.out.println(days+" days is equal to " + weeks +" weeks, " + days2 +" days"); 
+
+        System.out.println("RECIEPT GENERATOR");
+        System.out.print("enter the cost of the item you are buying: ");
+        double cost = input.nextDouble();
+        System.out.print("enter the number of items you are buying: ");
+        int n = input.nextInt();
+        System.out.print("enter the tax rate on the items you are buying in % ");
+        int tax = input.nextInt();
+
+        double total = cost*n+ cost*n*tax/100;
+        System.out.println("your total is "+total+ " dollars");
+
+        System.out.println("SUM OF DIGITS CALCULATOR");
+        System.out.print("enter a positive 3-digit number: ");
+        int num = input.nextInt();
+        int a = num%10;
+        int b=num%100 - a;
+        int d = num%1000 - a-b;
+        int sum = a+b/10+d/100;
+        System.out.println("the sum of "+num+ " is "+sum);
+
+    }
+}
