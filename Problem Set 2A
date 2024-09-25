@@ -1,0 +1,97 @@
+//dahlia tynes
+//24/09/2024
+//Problem Set 2A
+
+class Driver{
+    public static void main  (String[]args){
+        /*Circle c =new Circle(2);
+        System.out.println("Creating a circle with the default or paramaterized constructor!\nHello, I am a circle with:\nradius: " +
+        c.getRadius() + "units\ncircumference: " +c.circumference()+ " units\nand area: " +c.area()+" units");
+
+        */
+       
+       Cylinder c = new Cylinder();
+       System.out.println(c.toString());
+    }
+}
+
+
+//dahlia tynes
+//24/09/2024
+//problem set 2A
+
+
+class Circle{
+
+    double radius;
+
+    Circle(){
+        radius=1;
+    }
+
+    Circle(double r){
+        radius=r;
+    }
+
+    public String toString(){
+        return "hello, I am a circle with a radius of" +radius;
+    }
+
+    public double getRadius(){
+        return radius;
+    }
+
+    public double circumference(){
+        return radius*2*Math.PI;
+
+    }
+
+    public double area(){
+        return radius*radius*Math.PI;
+    }
+}
+
+    
+//dahlia tynes
+
+class Cylinder{
+
+    double height;
+    Circle base;
+
+    public Cylinder(double h, double r){
+        height = h;
+        base=new Circle(r);
+
+    }
+       public Cylinder(){
+        height = 1;
+        base=new Circle(1);
+
+    }
+
+
+    public String toString(){
+        return "I am a cylinder with a height of " + height+
+        "\na radius of " +getRadius()+
+        "\na surface area of " +getSurfaceArea()+
+        "\nand a volume of "+getVolume();
+    }
+
+    public double getRadius(){
+        return base.radius;
+    }
+
+    public double getHeight(){
+        return height;
+    }
+
+    public double getSurfaceArea(){
+        return 2*Math.PI*getRadius()*getHeight()+2*Math.PI*getRadius()*getRadius();
+    }
+
+    public double getVolume(){
+        return Math.PI*getRadius()*getRadius()*getHeight();
+    }
+}
+
