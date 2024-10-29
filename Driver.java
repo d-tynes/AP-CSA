@@ -11,8 +11,8 @@ class Driver{
         Scanner input = new Scanner(System.in);
         System.out.println("enter a review to see its value");
         
-        System.out.println(Review.totalSentiment("review2.txt"));
-        System.out.println(Review.starRating("review2.txt") + " stars");
+        System.out.println(Review.fakeReview("review3.txt"));
+        
         
         
        

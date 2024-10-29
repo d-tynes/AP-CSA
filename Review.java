@@ -173,7 +173,36 @@ public class Review {
         }
         return total;
     }
+    
+    /**
+     * returns the total sentiment value of a review
+     */
+    public static String fakeReview(String fileName){
+        String newReview="";
+        String wholeReview =textToString(fileName);
+        String[] reviewWords =wholeReview.split(" ") ;
 
+        for( int i=0; i<reviewWords.length;i++){
+            int replace = reviewWords[i].indexOf("*");
+            if(replace>=0) {
+                // if review is neg
+                if(sentimentVal(reviewWords[i])>=0){
+                    newReview+= randomNegativeAdj() +" ";
+                }
+                // if review is pos
+                
+                else if(sentimentVal(reviewWords[i])>=0){
+                    newReview+= randomPositiveAdj() +" ";
+                }
+            }
+            else newReview+=reviewWords[i] + " ";
+            
+        }
+        return newReview;
+        
+    }
+    
+    
     /**
      * returns the total star value of a review based on its score
      */
