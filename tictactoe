@@ -1,0 +1,108 @@
+/* dahlia tynes
+ * APCSA 1-3
+ * 05/12/2024 */
+
+import java.util.Scanner;
+
+class Driver{
+     static  Scanner input = new Scanner(System.in);
+     public static String[][] grid = new String[3][3];
+     static int roundCount =1;
+     static boolean playerX=true;
+     static boolean win =false;
+    public static void main (String[]args){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Round "+roundCount);
+        initializeBoard();
+        
+        
+        while(win==false){
+            if(roundCount%2==1)playerX=true;
+            else if(roundCount%2==0)playerX=false;
+            turn();
+            roundCount++;
+            checkWin();
+        }
+    }
+    public static void initializeBoard(){
+      
+        for (int i=0;i<grid.length;i++){
+            for( int j=0; j<grid[0].length; j++){
+                grid[i][j]=" - ";
+                System.out.print(grid[i][j]);
+                 
+            }
+            System.out.println();
+        }
+       
+    }
+    public static void printBoard(){
+         for (int i=0;i<grid.length;i++){
+            for( int j=0; j<grid[0].length; j++){
+                System.out.print(grid[i][j]);
+            }
+            System.out.println();
+            
+        }
+        System.out.println("Round: "+roundCount);
+    }
+    
+    
+    public static void turn(){
+        if(playerX==true)  System.out.println("Player X, select a gridspace");
+        else System.out.println("Player O, select a gridspace");
+        selectSquare();
+        printBoard();
+        
+    }
+    public static void selectSquare(){
+        String[] temp = input.nextLine().split(",");
+        Integer a= Integer.valueOf(temp[0]);
+        Integer b= Integer.valueOf(temp[1]);
+       if (a>2||b>2){ 
+        System.out.println("That spot doesn't exist! choose a new one");
+        selectSquare();
+     
+    } else if(grid[a][b].equals(" O ")||grid[a][b].equals(" X ")) {
+        System.out.println("That spot is taken.\nPlease select a different one.");
+        selectSquare();
+    } 
+    else if (playerX==true) grid[a][b]=" X ";
+    else grid[a][b]=" O ";
+    
+}
+
+public static void checkWin(){
+    int i=0;
+    
+    //rows
+        if(grid[0][i]!=" - "&&grid[0][i]==grid[0][i+1]&&grid[0][i]==grid[0][i+2]) win();
+        if(grid[1][i]!=" - "&&grid[1][i]==grid[1][i+1]&&grid[1][i]==grid[1][i+2]) win();
+        if(grid[2][i]!=" - "&&grid[2][i]==grid[2][i+1]&&grid[2][i]==grid[0][i+2]) win();
+        
+    //columns
+        if(grid[i][0]!=" - "&&grid[i][0]==grid[i+1][0]&&grid[i][0]==grid[i+2][0]) win();
+        if(grid[i][1]!=" - "&&grid[i][1]==grid[i+1][1]&&grid[i][1]==grid[i+2][1]) win();
+        if(grid[1][2]!=" - "&&grid[i][2]==grid[i+1][2]&&grid[i][2]==grid[i+2][2]) win();
+        
+    //diagonals
+        if(grid[0][0]!=" - "&&grid[1][1]==grid[0][0]&&grid[0][0]==grid[2][2]) win();
+        if(grid[2][0]!=" - "&&grid[1][1]==grid[2][0]&&grid[0][2]==grid[2][0]) win();
+    
+    }
+    
+    public static void win(){
+        win=true;
+        if(playerX==true) System.out.println("PLAYER X WINS!");
+        else System.out.println("PLAYER Y WINS!");
+        System.out.println("Play again? Y or N");
+        String playAgain= input.nextLine();
+        if(playAgain.equals("Y")||playAgain.equals("y")){
+            win=false;
+            roundCount=1;
+            initializeBoard();
+        }
+    }
+}
+
+
