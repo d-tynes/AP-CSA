@@ -107,6 +107,35 @@ public class Fraction{
         return newFraction;
         
     }
+    
+    
+    public static Fraction findPI(){
+        
+        //finding a fraction closer to PI than MILU
+        Fraction MILU = new Fraction(355, 113 );
+        final double EPSILON = Math.abs(Math.PI - MILU.toDouble());
+        
+        
+        //starting num + denom of "PI"
+        int tempNum = 3;
+        int tempDenom=1;
+        
+        
+        //representing our approximation of PI
+        Fraction approximationPI=new Fraction(tempNum,tempDenom);
+        
+        
+        double approximatePI=approximationPI.toDouble();
+        //looping until difference between MILU and Math.PI is acceptable
+        while(Math.abs( Math.PI - approximatePI ) >= EPSILON){
+        if( approximatePI < Math.PI) approximationPI.numerator+=1;
+         else approximationPI.denominator+=1;
+          approximatePI=approximationPI.toDouble();
+        System.out.println(approximationPI.toString());
+        }
+        return approximationPI;
+    }
+    
     }
     
     
