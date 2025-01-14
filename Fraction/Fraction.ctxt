@@ -1,6 +1,5 @@
 #BlueJ class context
 comment0.target=Fraction
-comment0.text=\ Dahlia\ Tynes\n\ 7\ January\ 2025\nAPCSA
 comment1.params=
 comment1.target=Fraction()
 comment10.params=replacement
@@ -19,8 +18,14 @@ comment16.params=a\ b
 comment16.target=Fraction\ subtract(Fraction,\ Fraction)
 comment17.params=
 comment17.target=Fraction\ findPI()
+comment18.params=
+comment18.target=void\ startGame()
+comment19.params=points\ tries
+comment19.target=void\ playGame(int,\ int)
 comment2.params=n\ d
 comment2.target=Fraction(int,\ int)
+comment20.params=p\ t
+comment20.target=void\ endGame(int,\ int)
 comment3.params=str
 comment3.target=Fraction(java.lang.String)
 comment4.params=f
@@ -35,4 +40,4 @@ comment8.params=
 comment8.target=java.lang.String\ toString()
 comment9.params=
 comment9.target=void\ reduce()
-numComments=18
+numComments=21

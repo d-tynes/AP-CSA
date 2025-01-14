@@ -1,8 +1,10 @@
 /* Dahlia Tynes
  * 7 January 2025
  * APCSA  */
-
+import java.util.Scanner;
 public class Fraction{
+    
+    Scanner input = new Scanner(System.in); 
     private int numerator;
     private int denominator;
     
@@ -22,7 +24,7 @@ public class Fraction{
     
     public Fraction(String str){
         String s=str;
-      String[] temp= s.split(",");
+      String[] temp= s.split("/");
       numerator = Integer.parseInt(temp[0]);
       denominator = Integer.parseInt(temp[1]);
       
@@ -136,7 +138,89 @@ public class Fraction{
         return approximationPI;
     }
     
+    public  void startGame(){
+        int points=0;
+        int tries=0;
+        System.out.println
+        ("Let the Fraction Quiz Begin.Answers should be in lowest terms. Good luck!");
+
+        playGame(points,tries);
     }
+        
+        
+    public  void playGame(int points, int tries){
+        int p=points;
+        int t=tries;
+            Fraction a = new Fraction((int) (Math.random()*9 +1), (int) (Math.random()*9 +1));
+        Fraction b = new Fraction((int) (Math.random()*9 +1), (int) (Math.random()*9 +1));
+       
+        int operator = (int) (Math.random()*4 +1);
+        char operatorChar;
+        
+        Fraction answer; //what is the correct answer? assigned below based on operator
+        
+        if(operator==1){
+            answer=multiply(a,b);
+            operatorChar='*';
+        }else if(operator==2){
+            answer=divide(a,b);
+            operatorChar='/';
+        }else if(operator==3){
+            answer=add(a,b);
+            operatorChar='+';
+        }else{
+            answer=subtract(a,b);
+            operatorChar='-';
+        }
+        
+        //reducing answer to lowest terms.
+        answer.reduce();
+        
+         System.out.println(a.toString()+" "+operatorChar+" "+b.toString()+" =");
+         
+         Fraction guess=new Fraction();
+         
+         String ans = input.nextLine();
+         
+         if(ans.equals("quit"))endGame(points,tries);
+         
+      else{
+          String[] temp= ans.split("/");
+      guess.numerator = Integer.parseInt(temp[0]);
+      guess.denominator = Integer.parseInt(temp[1]);
+    }
+    
+
+         if(guess.numerator==answer.numerator&&
+         guess.denominator==answer.denominator){
+             System.out.println("Correct!");
+             p+=1;
+             t+=1;
+             playGame(p,t);
+         } else {
+             System.out.println ("Incorrect. The answer was "+answer);
+             
+             t+=1;
+             playGame(p,t);
+        }
+       
+        }
+        public static void endGame(int p, int t){
+            double percent =p/t;
+            
+           System.out.println
+           ("Your win/loss ratio was "+p+"/"+t+", for a score of "+Math.round(percent)+"  percent!");
+           
+        }
+    }
+        
+        
+        
+        
+    
+    
+    
+    
     
     
     
